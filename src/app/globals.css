@@ -56,6 +56,40 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    /* GitHub Dark Mode Design System */
+    --ds-bg-primary: #0d1117;
+    --ds-bg-secondary: #161b22;
+    --ds-bg-tertiary: #1f242c;
+    --ds-bg-overlay: rgba(22, 27, 34, 0.8);
+    --ds-text-primary: #e6edf3;
+    --ds-text-secondary: #8b949e;
+    --ds-text-tertiary: #6e7681;
+    --ds-text-link: #58a6ff;
+    --ds-text-link-hover: #79c0ff;
+    --ds-border-default: #30363d;
+    --ds-border-muted: #21262d;
+    --ds-accent-primary: #238636;
+    --ds-accent-primary-border: #2ea043;
+    --ds-accent-danger: #da3633;
+    --ds-accent-danger-border: #f85149;
+    --ds-accent-warning: #e3b341;
+    --ds-accent-info: #388bfd;
+    --ds-accent-success: #238636;
+    --ds-accent-merged: #8957e5;
+    --ds-accent-open: #2da44e;
+    --ds-accent-closed: #e1575a;
+    --ds-accent-merged-icon: #8250df;
+    --ds-spacing-xs: 4px;
+    --ds-spacing-sm: 8px;
+    --ds-spacing-md: 16px;
+    --ds-spacing-lg: 24px;
+    --ds-spacing-xl: 32px;
+    --ds-radius-small: 4px;
+    --ds-radius-medium: 6px;
+    --ds-radius-large: 8px;
+    --ds-radius-pill: 9999px;
+    --ds-radius-circle: 50%;
   }
 }
 

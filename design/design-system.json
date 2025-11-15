@@ -1,0 +1,248 @@
+{
+    "name": "GitHub Dark Mode (Inferred)",
+    "description": "A JSON-based design system derived from GitHub's dark theme, based on the provided screenshots. It is intended for AI-driven replication in tools like Cursor to maintain a consistent visual style. This system defines the core color palette, typography, layout rules, and component styles.",
+    "palette": {
+      "background": {
+        "primary": "#0d1117",
+        "secondary": "#161b22",
+        "tertiary": "#1f242c",
+        "overlay": "rgba(22, 27, 34, 0.8)"
+      },
+      "text": {
+        "primary": "#e6edf3",
+        "secondary": "#8b949e",
+        "tertiary": "#6e7681",
+        "link": "#58a6ff",
+        "link-hover": "#79c0ff"
+      },
+      "border": {
+        "default": "#30363d",
+        "muted": "#21262d"
+      },
+      "accents": {
+        "primary": {
+          "main": "#238636",
+          "contrastText": "#ffffff",
+          "border": "#2ea043"
+        },
+        "default": {
+          "main": "#21262d",
+          "contrastText": "#e6edf3",
+          "border": "rgba(240, 246, 252, 0.1)"
+        },
+        "danger": {
+          "main": "#da3633",
+          "contrastText": "#ffffff",
+          "border": "#f85149"
+        },
+        "warning": {
+          "main": "#e3b341",
+          "contrastText": "#0d1117"
+        },
+        "info": {
+          "main": "#388bfd",
+          "contrastText": "#ffffff"
+        },
+        "success": {
+          "main": "#238636",
+          "contrastText": "#ffffff"
+        },
+        "merged": {
+          "main": "#8957e5",
+          "contrastText": "#ffffff"
+        },
+        "open-icon": "#2da44e",
+        "closed-icon": "#e1575a",
+        "merged-icon": "#8250df"
+      }
+    },
+    "typography": {
+      "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
+      "baseFontSize": "14px",
+      "lineHeight": "1.5",
+      "body": {
+        "fontFamily": "var(--typography-fontFamily)",
+        "fontSize": "var(--typography-baseFontSize)",
+        "color": "var(--palette-text-primary)"
+      },
+      "headings": {
+        "h1": {
+          "fontSize": "24px",
+          "fontWeight": 600
+        },
+        "h2": {
+          "fontSize": "20px",
+          "fontWeight": 600
+        },
+        "h3": {
+          "fontSize": "16px",
+          "fontWeight": 600
+        }
+      },
+      "link": {
+        "color": "var(--palette-text-link)",
+        "textDecoration": "none",
+        "hover": {
+          "textDecoration": "underline"
+        }
+      },
+      "metadata": {
+        "color": "var(--palette-text-secondary)",
+        "fontSize": "12px"
+      },
+      "code": {
+        "fontFamily": "monospace",
+        "backgroundColor": "var(--palette-background-tertiary)",
+        "borderRadius": "var(--layout-borderRadius-medium)",
+        "padding": "0.2em 0.4em"
+      }
+    },
+    "layout": {
+      "spacing": {
+        "xs": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "lg": "24px",
+        "xl": "32px"
+      },
+      "borderRadius": {
+        "small": "4px",
+        "medium": "6px",
+        "large": "8px",
+        "pill": "9999px",
+        "circle": "50%"
+      },
+      "divider": {
+        "borderBottom": "1px solid var(--palette-border-default)"
+      },
+      "pageStructure": {
+        "headerHeight": "60px",
+        "mainContentMaxWidth": "1280px",
+        "sidebarWidth": "296px",
+        "contentPadding": "var(--layout-spacing-md)"
+      }
+    },
+    "components": {
+      "button": {
+        "base": {
+          "fontFamily": "var(--typography-fontFamily)",
+          "fontSize": "14px",
+          "fontWeight": 500,
+          "lineHeight": "20px",
+          "padding": "5px 16px",
+          "borderRadius": "var(--layout-borderRadius-medium)",
+          "cursor": "pointer",
+          "transition": "background-color 0.2s"
+        },
+        "primary": {
+          "extends": "button.base",
+          "color": "var(--palette-accents-primary-contrastText)",
+          "backgroundColor": "var(--palette-accents-primary-main)",
+          "border": "1px solid var(--palette-accents-primary-border)",
+          "hover": {
+            "backgroundColor": "#2ea043"
+          }
+        },
+        "default": {
+          "extends": "button.base",
+          "color": "var(--palette-text-primary)",
+          "backgroundColor": "var(--palette-accents-default-main)",
+          "border": "1px solid var(--palette-accents-default-border)",
+          "hover": {
+            "backgroundColor": "var(--palette-background-tertiary)",
+            "borderColor": "var(--palette-border-default)"
+          }
+        },
+        "danger": {
+          "extends": "button.base",
+          "color": "var(--palette-accents-danger-contrastText)",
+          "backgroundColor": "var(--palette-accents-danger-main)",
+          "border": "1px solid var(--palette-accents-danger-border)",
+          "hover": {
+            "backgroundColor": "#c93c37"
+          }
+        },
+        "iconButton": {
+          "extends": "button.default",
+          "padding": "5px"
+        }
+      },
+      "card": {
+        "base": {
+          "backgroundColor": "var(--palette-background-secondary)",
+          "border": "1px solid var(--palette-border-default)",
+          "borderRadius": "var(--layout-borderRadius-medium)"
+        },
+        "header": {
+          "padding": "var(--layout-spacing-sm) var(--layout-spacing-md)",
+          "borderBottom": "1px solid var(--palette-border-default)",
+          "backgroundColor": "var(--palette-background-secondary)",
+          "borderTopLeftRadius": "var(--layout-borderRadius-medium)",
+          "borderTopRightRadius": "var(--layout-borderRadius-medium)"
+        },
+        "body": {
+          "padding": "var(--layout-spacing-md)"
+        },
+        "dangerZone": {
+          "extends": "card.base",
+          "borderColor": "var(--palette-accents-danger-border)"
+        }
+      },
+      "feedCard": {
+        "extends": "card.base",
+        "padding": "var(--layout-spacing-md)",
+        "marginBottom": "var(--layout-spacing-md)"
+      },
+      "listItem": {
+        "base": {
+          "display": "flex",
+          "alignItems": "center",
+          "padding": "var(--layout-spacing-sm) var(--layout-spacing-md)",
+          "borderBottom": "1px solid var(--palette-border-default)"
+        },
+        "hover": {
+          "backgroundColor": "var(--palette-background-tertiary)"
+        },
+        "lastChild": {
+          "borderBottom": "none"
+        }
+      },
+      "labelBadge": {
+        "base": {
+          "display": "inline-block",
+          "padding": "2px 8px",
+          "fontSize": "12px",
+          "fontWeight": 500,
+          "lineHeight": "18px",
+          "borderRadius": "var(--layout-borderRadius-pill)",
+          "border": "1px solid transparent"
+        },
+        "default": {
+          "extends": "labelBadge.base",
+          "color": "var(--palette-text-secondary)",
+          "borderColor": "var(--palette-border-default)"
+        },
+        "issue": {
+          "extends": "labelBadge.base",
+          "color": "var(--palette-text-secondary)",
+          "borderColor": "var(--palette-border-default)"
+        }
+      },
+      "navigation": {
+        "sidebarItem": {
+          "padding": "var(--layout-spacing-sm) var(--layout-spacing-md)",
+          "color": "var(--palette-text-secondary)",
+          "textDecoration": "none",
+          "display": "block",
+          "borderRadius": "var(--layout-borderRadius-medium)"
+        },
+        "sidebarItemActive": {
+          "extends": "navigation.sidebarItem",
+          "color": "var(--palette-text-primary)",
+          "fontWeight": 600,
+          "backgroundColor": "rgba(110, 118, 129, 0.1)",
+          "borderLeft": "3px solid var(--palette-accents-info-main)"
+        }
+      }
+    }
+  }
