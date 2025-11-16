@@ -4,6 +4,8 @@ import React, { useEffect, useRef } from 'react';
 import { Navbar } from '@/components/navbar';
 
 const UNICORN_STUDIO_PROJECT_ID = '8zvmM9ZMVMtmZevY9Q0S';
+const SCRIPT_URL =
+  'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.34/dist/unicornStudio.umd.js';
 
 declare global {
   interface Window {
@@ -16,32 +18,55 @@ declare global {
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const scriptLoadedRef = useRef(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || window.UnicornStudio?.isInitialized) {
+    if (typeof window === 'undefined') {
       return;
     }
 
-    if (!window.UnicornStudio) {
-      window.UnicornStudio = { isInitialized: false };
-    }
-
-    const script = document.createElement('script');
-    script.src =
-      'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.34/dist/unicornStudio.umd.js';
-    script.onload = () => {
-      if (!window.UnicornStudio?.isInitialized && window.UnicornStudio?.init) {
+    const initializeUnicornStudio = () => {
+      if (window.UnicornStudio?.init) {
         window.UnicornStudio.init();
         window.UnicornStudio.isInitialized = true;
       }
     };
-    (document.head || document.body).appendChild(script);
 
-    return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
+    if (window.UnicornStudio?.init) {
+      initializeUnicornStudio();
+      return;
+    }
+
+    if (scriptLoadedRef.current) {
+      return;
+    }
+
+    const existingScript = document.querySelector(`script[src="${SCRIPT_URL}"]`);
+    if (existingScript) {
+      scriptLoadedRef.current = true;
+      const checkInit = setInterval(() => {
+        if (window.UnicornStudio?.init) {
+          clearInterval(checkInit);
+          initializeUnicornStudio();
+        }
+      }, 100);
+
+      return () => clearInterval(checkInit);
+    }
+
+    scriptLoadedRef.current = true;
+    const script = document.createElement('script');
+    script.src = SCRIPT_URL;
+    script.async = true;
+    script.onload = () => {
+      const checkInit = setInterval(() => {
+        if (window.UnicornStudio?.init) {
+          clearInterval(checkInit);
+          initializeUnicornStudio();
+        }
+      }, 100);
     };
+    (document.head || document.body).appendChild(script);
   }, []);
 
   return (
